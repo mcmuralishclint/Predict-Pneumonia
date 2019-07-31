@@ -1,0 +1,44 @@
+
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+{%block content%}
+{% load socialaccount %}
+  <section id="projects" class="projects-section bg-light">
+ 	<center><h1>Sign In</h1></center>
+    <div id="signin" class="col-4 offset-4 mt-5 mb-5">
+	<form method="POST">
+		{%csrf_token%}
+			{% if messages %}
+			  <div class="alert alert-danger alert-dismissible fade show">
+		  <ul class="messages">
+		    {% for message in messages %}
+		    	<button type="button" class="close" data-dismiss="alert">&times;</button>
+		      <li class="{{ message.tags }}">{{ message }}</li>
+		    {% endfor %}
+		  </ul>
+		 </div>
+		 	{% endif %}
+		{{form|crispy}}
+	
+
+
+
+
+	
+	<center><button type="submit" class="btn btn-dark">Submit</button></center>
+	</form>
+	<br>
+	    <div class="social d-flex justify-content-center">
+        <a href="#" class="mx-2">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="mx-2">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="{% provider_login_url 'github' %}" class="mx-2">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+</div>
+</section>
+{%endblock%}

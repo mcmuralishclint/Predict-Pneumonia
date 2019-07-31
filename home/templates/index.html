@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+  <!-- About Section -->
+  <section id="about" class="about-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">What is this website for?</h2>
+          <p class="text-white-50">This web app uses <a href="">DeepLearning</a> to predict if a human being has Pneumonia by analyzing their X-Ray. A normal chest would contain no abnormal opacification in the X-RAY image, lungs with bacterial pneumonia will exhibit a focal lobar consolidation and lungs with viral pneumonia manifests with a more diffuse interstital pattern in both lungs. </p>
+        </div>
+      </div>
+      <img src="{%static 'img/ipad.png'%}" class="img-fluid" alt="">
+    </div>
+  </section>
+
+  </section>
+<!-- Projects Section -->
+  <section id="projects" class="projects-section bg-light">
+    <div class="container">
+      
+      <!-- Featured Project Row -->
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+
+        {%if not user.is_authenticated%}
+        <div class="col-xl-7 col-lg-8">
+          <img class="img-fluid mb-3 mb-lg-0" src="{% static 'img/x.jpg'%}" alt="">
+        </div>
+
+        <div class="col-xl-4 col-lg-5">
+          <div class="featured-text text-center text-lg-left">
+            <h4>To do:</h4>
+            <p class="text-black-50 mb-0">You may upload your lung X-Ray sample once you login.</p>
+          </div>
+        </div>
+        {%else%}
+        <div class="col-xl-7 col-lg-8">
+          <img class="img-fluid mb-3 mb-lg-0" src="{% static 'img/sample.jpg'%}" alt="">
+        </div>
+
+        <div class="col-xl-4 col-lg-5">
+          <div class="featured-text text-center text-lg-left">
+            <center><h4>Please upload your image</h4></center>  
+            <center><button type="submit" method="POST" class="btn btn-primary">Upload</button><hr>
+
+            <center><span>You have 4 tries left</span></center><button type="submit" method="POST" class="btn btn-dark" disabled>Analyze</button></center>
+
+          </div>
+        </div>
+        {%endif%}
+      </div>
+
+      
+    </div>
+  </section>
+{%endblock%}

@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+{%block content%}
+  <section id="projects" class="projects-section bg-light">
+ 	<center><h1>Sign Up</h1></center>
+    <div id="signup" class="col-4 offset-4 mt-5 mb-5">
+	<form method="POST">
+		{%csrf_token%}
+		{{form|crispy}}
+		{% if messages %}
+		  <ul class="messages">
+		    {% for message in messages %}
+		      <li class="{{ message.tags }}">{{ message }}</li>
+		    {% endfor %}
+		  </ul>
+		{% endif %}
+		<button class="btn btn-dark" type="submit">Submit</button>
+	</form>
+	
+</div>
+</section>
+{%endblock%}
