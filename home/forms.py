@@ -16,3 +16,9 @@ class SignUpForm(forms.Form):
 		if self.cleaned_data["orig_password"]!=self.cleaned_data["confirm_pass"]:
 			raise forms.ValidationError("Password must match")
 
+class UploadImage(models.Model):
+    title = models.TextField()
+    image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.title
