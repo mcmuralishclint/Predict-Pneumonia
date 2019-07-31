@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from django import forms
+from .models import UploadImage
 from django.contrib.auth.models import User
 
 class LoginForm(forms.Form):
@@ -16,9 +17,5 @@ class SignUpForm(forms.Form):
 		if self.cleaned_data["orig_password"]!=self.cleaned_data["confirm_pass"]:
 			raise forms.ValidationError("Password must match")
 
-class UploadImage(models.Model):
-    title = models.TextField()
-    image = models.ImageField(upload_to='images/')
-
-    def __str__(self):
-        return self.title
+class ImageForm(forms.Form):
+	image = forms.ImageField()

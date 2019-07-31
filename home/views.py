@@ -1,22 +1,37 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import logout,login,authenticate
-from .forms import LoginForm, SignUpForm
+from .forms import LoginForm, SignUpForm,ImageForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from marketing.forms import EmailSignupForm
+from .models import UploadImage
+from PIL import Image
 
 def home_view(request):
-	form = EmailSignupForm()
+	images=None
+	email_form = EmailSignupForm()
+	image_form = ImageForm(request.POST, request.FILES)
 	if request.method == "POST":
-		if request.POST.get['email']!=None:
+		if email_form.is_valid():
 			email = request.POST["email"]
 			new_signup = Signup()
 			new_signup.email = email
 			new_signup.save()
+		else:
+			if image_form.is_valid():
+
+				#images = request.FILES['image']
+				new_image = UploadImage(image = request.FILES['image'])
+				new_image.save()
+
+				images = UploadImage.objects.all()
+				images = images[len(images)-1]
 
 	context = {
 	'page':'home',
-	'form_marketing':form
+	'form_marketing':email_form,
+	'imageform': image_form,
+	'images':images
 	}
 	return render(request,"index.html",context)
 
@@ -59,4 +74,3 @@ def signup_view(request):
 	}
 	return render(request,"signup.html",context)
 
-	

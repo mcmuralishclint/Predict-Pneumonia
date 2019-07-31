@@ -35,16 +35,24 @@
         </div>
         {%else%}
         <div class="col-xl-7 col-lg-8">
+          {%if images is None%}
           <img class="img-fluid mb-3 mb-lg-0" src="{% static 'img/sample.jpg'%}" alt="">
+          {%else%}
+          <img class="img-fluid mb-3 mb-lg-0" width="560px" height="315px" src={{images.image.url}} alt="">
+          {%endif%}
         </div>
 
         <div class="col-xl-4 col-lg-5">
           <div class="featured-text text-center text-lg-left">
             <center><h4>Please upload your image</h4></center>  
-            <center><button type="submit" method="POST" class="btn btn-primary">Upload</button><hr>
 
-            <center><span>You have 4 tries left</span></center><button type="submit" method="POST" class="btn btn-dark" disabled>Analyze</button></center>
-
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+             {{ imageform.as_p }}
+              <hr>
+               <center><span>You have 4 tries left</span></center>
+            <center><button type="submit" method="POST" class="btn btn-primary" href="projects">Upload</button></center>
+           </form>
           </div>
         </div>
         {%endif%}
@@ -53,4 +61,6 @@
       
     </div>
   </section>
+
+
 {%endblock%}
