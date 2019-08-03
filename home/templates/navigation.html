@@ -1,0 +1,53 @@
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      {% if page == 'home' %}
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+      {%else%}
+      <a class="navbar-brand js-scroll-trigger" href="/">Home</a>
+      {%endif%}
+
+
+      {%if user.is_authenticated%}
+      <a class="nav-link js-scroll-trigger" href="/logout/">Sign Out</a>
+      {%else%}
+        {% if page == 'home' %}
+            <a class="nav-link js-scroll-trigger" href="/login/">Sign In</a>
+            <a class="nav-link js-scroll-trigger" href="/signup/">Sign Up</a>
+        {%elif page == 'login'%}
+            <a class="nav-link js-scroll-trigger" href="#projects">Sign In</a>
+            <a class="nav-link js-scroll-trigger" href="/signup">Sign Up</a>
+        {%elif page == 'signup'%}
+            <a class="nav-link js-scroll-trigger" href="/login">Sign In</a>
+            <a class="nav-link js-scroll-trigger" href="#projects">Sign Up</a>
+        {%endif%}
+      {%endif%}
+
+
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          {% if page == 'home'%}
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#projects">Predict</a>
+          </li>
+          {%endif%}
+          {%if not user.is_authenticated%}
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#newsletter">Subscribe</a>
+          </li>
+          {%endif%}
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

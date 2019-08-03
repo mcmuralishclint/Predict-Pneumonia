@@ -1,9 +1,14 @@
 
-{%extends 'base.html'%}
 {%load crispy_forms_tags%}
 {%load static%}
 {%block content%}
 {% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+{%include 'header.html'%}
+
+<body id="page-top">
 
   <section id="projects" class="projects-section bg-light">
  	<center><h1>Sign In</h1></center>
@@ -21,12 +26,6 @@
 		 </div>
 		 	{% endif %}
 		{{form|crispy}}
-	
-
-
-
-
-	
 	<center><button type="submit" class="btn btn-dark">Submit</button></center>
 	</form>
 	<br>
@@ -41,6 +40,14 @@
           <i class="fab fa-github"></i>
         </a>
       </div>
+      <br>
+	<a href="/">Home</a> |
+	<a href="/signup/">Sign Up</a>
 </div>
 </section>
+<br>
+	<a href="/">Home</a> |
+	<a href="/login/">Login</a>
 {%endblock%}
+</body>
+</html>

@@ -1,7 +1,12 @@
-{%extends 'base.html'%}
 {%load crispy_forms_tags%}
-{%block content%}
-  <section id="projects" class="projects-section bg-light">
+
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+{%include 'header.html'%}
+
+<body >
+  <section id="projects"><br><br>
  	<center><h1>Sign Up</h1></center>
     <div id="signup" class="col-4 offset-4 mt-5 mb-5">
 	<form method="POST">
@@ -14,9 +19,13 @@
 		    {% endfor %}
 		  </ul>
 		{% endif %}
-		<button class="btn btn-dark" type="submit">Submit</button>
+		<center><button class="btn btn-dark" type="submit">Submit</button></center>
 	</form>
+	<br>
+	<a href="/">Home</a> |
+	<a href="/login/">Login</a>
 	
 </div>
 </section>
-{%endblock%}
+</body>
+</html>	

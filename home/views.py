@@ -66,7 +66,7 @@ def signup_view(request):
 		firstname = signupform.cleaned_data['firstname']
 		user = User.objects.create_user(firstname,username,password)
 		user.save()
-		return redirect('/login')
+		return redirect('/')
 		messages.success(request, 'User Created') 
 	context = {
 	"form":signupform,
