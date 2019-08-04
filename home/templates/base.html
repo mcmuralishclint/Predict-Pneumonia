@@ -1,5 +1,6 @@
 {%include 'header.html'%}
 {%load static%}
+
 <body id="page-top">
   {%include 'navigation.html'%}
   <!-- Header -->
@@ -15,6 +16,7 @@
         <a href="/login">Sign in</a> or <a href="/signup">Sign up</a> for analysis<br><br>
         {%endif%}
         {%endif%}
+
         {%if page == 'home'%}
         <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a><br><br>
         {% elif page == 'login' %}
@@ -22,6 +24,7 @@
         {% elif page == 'signup' %}
         <a href="#projects" class="btn btn-primary js-scroll-trigger">Sign Up</a><br><br>
         {%endif%}
+        
       </div>
     </div>
   </header>
@@ -51,6 +54,7 @@
  
 {%endif%}
   <!-- Contact Section -->
+
   <section id="contact" class="contact-section bg-black">
     <div class="container">
 

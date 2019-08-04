@@ -8,6 +8,7 @@ from .models import UploadImage
 from PIL import Image
 
 def home_view(request):
+	#email_subscribed=False
 	images=None
 	email_form = EmailSignupForm()
 	image_form = ImageForm(request.POST, request.FILES)
@@ -17,15 +18,20 @@ def home_view(request):
 			new_signup = Signup()
 			new_signup.email = email
 			new_signup.save()
+
+			messages.success(request, 'Subscription succesful') 
+			#email_subscribed=True
 		else:
 			if image_form.is_valid():
 
 				#images = request.FILES['image']
 				new_image = UploadImage(image = request.FILES['image'])
+				print()
 				new_image.save()
-
 				images = UploadImage.objects.all()
 				images = images[len(images)-1]
+
+				
 
 	context = {
 	'page':'home',

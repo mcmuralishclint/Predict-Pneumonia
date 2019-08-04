@@ -6,9 +6,11 @@
 {%include 'header.html'%}
 
 <body >
-  <section id="projects"><br><br>
- 	<center><h1>Sign Up</h1></center>
-    <div id="signup" class="col-4 offset-4 mt-5 mb-5">
+  <section id="projects"><br>
+ 	<center><h1>Sign Up</h1>
+	<a href="/">Home</a> |
+	<a href="/login/">Login</a></center>
+    <div id="signup" class="col-4 offset-4 mt-3 mb-5">
 	<form method="POST">
 		{%csrf_token%}
 		{{form|crispy}}
@@ -22,8 +24,6 @@
 		<center><button class="btn btn-dark" type="submit">Submit</button></center>
 	</form>
 	<br>
-	<a href="/">Home</a> |
-	<a href="/login/">Login</a>
 	
 </div>
 </section>

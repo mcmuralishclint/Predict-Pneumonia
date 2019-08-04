@@ -7,15 +7,7 @@
 <html lang="en">
 {%load static%}
 {%include 'header.html'%}
-
-<body id="page-top">
-
-  <section id="projects" class="projects-section bg-light">
- 	<center><h1>Sign In</h1></center>
-    <div id="signin" class="col-4 offset-4 mt-5 mb-5">
-	<form method="POST">
-		{%csrf_token%}
-			{% if messages %}
+{% if messages %}
 			  <div class="alert alert-danger alert-dismissible fade show">
 		  <ul class="messages">
 		    {% for message in messages %}
@@ -25,6 +17,16 @@
 		  </ul>
 		 </div>
 		 	{% endif %}
+<body >
+
+  <section id="projects" ><br>
+ 	<center><h1>Sign In</h1>
+	<a href="/">Home</a> |
+	<a href="/signup/">Sign Up</a></center>
+    <div id="signin" class="col-4 offset-4 mt-5 mb-5">
+	<form method="POST">
+		{%csrf_token%}
+			
 		{{form|crispy}}
 	<center><button type="submit" class="btn btn-dark">Submit</button></center>
 	</form>
@@ -41,13 +43,10 @@
         </a>
       </div>
       <br>
-	<a href="/">Home</a> |
-	<a href="/signup/">Sign Up</a>
 </div>
 </section>
 <br>
-	<a href="/">Home</a> |
-	<a href="/login/">Login</a>
+	
 {%endblock%}
 </body>
 </html>
